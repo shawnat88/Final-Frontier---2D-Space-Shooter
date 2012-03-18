@@ -9,9 +9,13 @@ import it.randomtower.engine.World;
 
 public class GameWorld extends World {
 
-	public GameWorld(int id, GameContainer container) {
+	public GameWorld(int id, GameContainer container) throws SlickException {
 		super(id, container);
 		// TODO Auto-generated constructor stub
+		
+		Player player = new Player(300,600);
+		add(player);
+		
 	}
 	
 	@Override

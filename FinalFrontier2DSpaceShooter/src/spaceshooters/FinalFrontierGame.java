@@ -1,4 +1,8 @@
 package spaceshooters;
+import it.randomtower.engine.ResourceManager;
+
+import java.io.IOException;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -21,6 +25,18 @@ public class FinalFrontierGame extends StateBasedGame {
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		// TODO Auto-generated method stub
+		try 
+		{
+			//Load in Resources
+			ResourceManager.loadResources("data/resources.xml");
+		}
+		
+		catch (IOException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		addState(new GameWorld(1, container));
 		
 	}
 	

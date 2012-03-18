@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<!-- basedir -->
+	<basedir path="data" />
+	<!-- sounds -->
+	<!-- songs -->
+	<!-- images --> 
+	<image key="player" file="/images/player.png" />
+	<!-- sheets --> 
+	<!-- fonts --> 
+</resources>
