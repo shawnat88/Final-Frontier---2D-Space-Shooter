@@ -5,66 +5,85 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-
+import it.randomtower.engine.ME;
 import it.randomtower.engine.ResourceManager;
 import it.randomtower.engine.entity.Entity;
 
-public class Player extends Entity {
+public class Player extends Entity 
+{
 	
 	/*
 	 * @Param x, x coordinate of player
 	 * @Param y, y coordinate of player
 	 */
+	private Image player, playerRight, playerLeft;
+	private int milliCount = 0; 
 	
 	public Player(float x, float y) throws SlickException
 	{
 		super(x, y);
-		//Load image from disk and associate it with player
-		//setGraphic(new Image("/data/images/Player.png"));
+		
 		//Load image using resource manager and resource.xml
-		Image img = ResourceManager.getImage("player");
-		setGraphic(img);
+		player = ResourceManager.getImage("player");
+		playerRight = ResourceManager.getImage("playerRight");
+		playerLeft = ResourceManager.getImage("playerLeft");
 		
-		//Handle input
-		define("RIGHT", Input.KEY_RIGHT);
-		define("LEFT", Input.KEY_LEFT);
-		define("UP", Input.KEY_UP);
-		define("DOWN", Input.KEY_DOWN);
+		//Define Keyboard/Mouse Inputs
+		define("RIGHT", Input.KEY_RIGHT, Input.KEY_D);
+		define("LEFT", Input.KEY_LEFT, Input.KEY_A);
+		define("UP", Input.KEY_UP, Input.KEY_W);
+		define("DOWN", Input.KEY_DOWN, Input.KEY_S);
+		define("PRIMARYFIRE", Input.KEY_SPACE);
 		
-		//Hitbox 
-		setHitBox(0,0,img.getWidth(),img.getHeight());
-		//Declare Type
+		//Hitbox and Entity Type
+		setHitBox(0,0,player.getWidth(),player.getHeight());
 		addType("PLAYER");
-		
 	}
 	
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException
 	{
 		super.update(gc, delta);
+		setGraphic(player);
 		
-		if(check("RIGHT") && (x < gc.getWidth() - 60))
+		if(check("PRIMARYFIRE"))
 		{
-				//Move player Right
-				x = x + 5;
+			milliCount += delta;
+			
+			if(milliCount == 0 || milliCount >= 100)
+			{
+				Bullet bullet = new Bullet(x + player.getWidth()/2 - 3, y);
+				ME.world.add(bullet);
+				milliCount = 0; 
+			}
+		}
+		
+		if(check("RIGHT") && (x < gc.getWidth() - player.getWidth()))
+		{
+			//Move player Right
+			x = x + 5;
+			setGraphic(playerRight);
 		}
 		
 		if(check("LEFT") && x > 0)
 		{
 			//Move player Right
 			x = x - 5;	
+			setGraphic(playerLeft);
 		}
 		
 		if(check("UP") && y > 0)
 		{
 			//Move player Right
 			y = y - 5;
+			setGraphic(player);
 		}
 		
-		if(check("DOWN") && (y < gc.getWidth() - 60))
+		if(check("DOWN") && (y < gc.getWidth() - player.getWidth()))
 		{
 			//Move player Right
 			y = y + 5;
+			setGraphic(player);
 		}
 	}
 	

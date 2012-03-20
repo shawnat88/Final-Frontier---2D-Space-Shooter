@@ -8,12 +8,14 @@ import org.newdawn.slick.state.StateBasedGame;
 import it.randomtower.engine.World;
 
 public class GameWorld extends World {
+	
+	private Player player;
 
 	public GameWorld(int id, GameContainer container) throws SlickException {
 		super(id, container);
 		// TODO Auto-generated constructor stub
 		
-		Player player = new Player(300,600);
+		player = new Player(container.getWidth()/ 2, container.getHeight() / 2);
 		add(player);
 		
 	}

@@ -5,7 +5,10 @@
 	<!-- sounds -->
 	<!-- songs -->
 	<!-- images --> 
-	<image key="player" file="/images/player.png" />
+	<image key="player" file="/images/Player1v2.png"/>
+	<image key="playerLeft" file="/images/PlayerLeft.png"/>
+	<image key="playerRight" file="/images/PlayerRight.png"/>
+	<image key="bullet" file="/images/bullet.png"/>
 	<!-- sheets --> 
 	<!-- fonts --> 
 </resources>
