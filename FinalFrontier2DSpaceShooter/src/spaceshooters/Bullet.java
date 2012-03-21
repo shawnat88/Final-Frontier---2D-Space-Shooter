@@ -18,8 +18,13 @@ public class Bullet extends Entity {
 		super(x,y);
 		bullet = ResourceManager.getImage("bullet");
 		setGraphic(bullet);
-		setHitBox(2,1,4,6);
+		
+		width = bullet.getWidth();
+		height = bullet.getHeight();
+		
+		setHitBox(0, 0, width, height); //previously 2,1,4,6
 		addType("BULLET");
+		
 	}
 	
 	@Override
@@ -33,6 +38,10 @@ public class Bullet extends Entity {
 			ME.world.remove(this);
 		}
 		
+		if(collide("MONSTER", x, y + 15) != null)
+		{
+			ME.remove(this);
+		}
 	}
 	
 	@Override

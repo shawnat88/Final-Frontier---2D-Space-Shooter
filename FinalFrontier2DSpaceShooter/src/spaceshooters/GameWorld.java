@@ -10,6 +10,7 @@ import it.randomtower.engine.World;
 public class GameWorld extends World {
 	
 	private Player player;
+	private Monster monster; 
 
 	public GameWorld(int id, GameContainer container) throws SlickException {
 		super(id, container);
@@ -17,6 +18,9 @@ public class GameWorld extends World {
 		
 		player = new Player(container.getWidth()/ 2, container.getHeight() / 2);
 		add(player);
+		
+		monster = new Monster(300,200);
+		add(monster);
 		
 	}
 	

@@ -35,8 +35,11 @@ public class Player extends Entity
 		define("DOWN", Input.KEY_DOWN, Input.KEY_S);
 		define("PRIMARYFIRE", Input.KEY_SPACE);
 		
+		width = player.getWidth();
+		height = player.getHeight();
+		
 		//Hitbox and Entity Type
-		setHitBox(0,0,player.getWidth(),player.getHeight());
+		setHitBox(10,0, width - 25, height + 5);
 		addType("PLAYER");
 	}
 	
@@ -45,6 +48,11 @@ public class Player extends Entity
 	{
 		super.update(gc, delta);
 		setGraphic(player);
+		
+		if(collide("MONSTER", x, y - 8) != null)
+		{
+			ME.remove(this);
+		}
 		
 		if(check("PRIMARYFIRE"))
 		{
