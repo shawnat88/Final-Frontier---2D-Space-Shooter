@@ -19,9 +19,18 @@ public class GameWorld extends World {
 		player = new Player(container.getWidth()/ 2, container.getHeight() / 2);
 		add(player);
 		
-		monster = new Monster(300,200);
+		monster = new Monster(300,0);
 		add(monster);
-		
+		Monster monster2 = new Monster(200, 0);
+		Monster monster3 = new Monster(100, 0);
+		Monster monster4 = new Monster(400,0);
+		Monster monster5 = new Monster(500, 0);
+		Monster monster6 = new Monster(0, 0);
+		add(monster2);
+		add(monster3);
+		add(monster4);
+		add(monster5);
+		add(monster6);
 	}
 	
 	@Override

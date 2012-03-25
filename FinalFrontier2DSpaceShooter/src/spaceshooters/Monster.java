@@ -24,17 +24,12 @@ public class Monster extends Entity
 		super(x,y);
 		health = 100;
 		numUpdates = 0; 
-		//Monster Images
-		khrellKiddieRight = ResourceManager.getImage("khrellKiddieRight");
-		khrellKiddieLeft = ResourceManager.getImage("khrellKiddieLeft");
 		
-		width = khrellKiddieRight.getWidth();
-		height = khrellKiddieRight.getHeight();
+		defineImages();
 		
 		//Hitbox and Entity Type
-		setHitBox(17,0,width - 10,height - 5);
-		addType("MONSTER");
-		
+		setHitBox(20,0, 24,75);
+		addType("MONSTER");	
 	}
 	
 	@Override
@@ -44,7 +39,9 @@ public class Monster extends Entity
 			
 		count += delta;
 		
-		System.out.println(count);
+		y++; 
+		
+		//System.out.println(count);
 		
 		if((count) % 2 == 0)
 		{
@@ -60,16 +57,20 @@ public class Monster extends Entity
 		if(collide("BULLET", x, y) != null)
 		{
 		
-			health-=20; //Monster has been hit
+			health-=50; //Monster has been hit
+			System.out.println(health);
 			
 			if(health == 0)
+			{
 				ME.remove(this); //Monster has died
+				System.out.println("Monster has been hit by Bullet.");
+			}
 		}
 		
 		if(collide("PLAYER", x , y) != null)
 		{
-			//Monster and Player have collided
 			ME.remove(this);
+			System.out.println("Monster has collided with Player.");
 		}
 	}
 	
@@ -77,5 +78,12 @@ public class Monster extends Entity
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
 		super.render(gc, g);
+	}
+	
+	public void defineImages()
+	{
+		//Monster Images
+		khrellKiddieRight = ResourceManager.getImage("khrellKiddieRight");
+		khrellKiddieLeft = ResourceManager.getImage("khrellKiddieLeft");
 	}
 }

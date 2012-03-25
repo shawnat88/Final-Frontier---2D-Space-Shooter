@@ -23,24 +23,12 @@ public class Player extends Entity
 	{
 		super(x, y);
 		
-		//Load image using resource manager and resource.xml
-		player = ResourceManager.getImage("player");
-		playerRight = ResourceManager.getImage("playerRight");
-		playerLeft = ResourceManager.getImage("playerLeft");
-		
-		//Define Keyboard/Mouse Inputs
-		define("RIGHT", Input.KEY_RIGHT, Input.KEY_D);
-		define("LEFT", Input.KEY_LEFT, Input.KEY_A);
-		define("UP", Input.KEY_UP, Input.KEY_W);
-		define("DOWN", Input.KEY_DOWN, Input.KEY_S);
-		define("PRIMARYFIRE", Input.KEY_SPACE);
-		
-		width = player.getWidth();
-		height = player.getHeight();
+		defineImages();
+		defineControls();
 		
 		//Hitbox and Entity Type
-		setHitBox(10,0, width - 25, height + 5);
-		addType("PLAYER");
+		setHitBox(0,0, 64, 60);
+		addType("PLAYER"); 
 	}
 	
 	@Override
@@ -49,16 +37,17 @@ public class Player extends Entity
 		super.update(gc, delta);
 		setGraphic(player);
 		
-		if(collide("MONSTER", x, y - 8) != null)
+		if(collide("MONSTER", x, y - 1) != null)
 		{
 			ME.remove(this);
+			System.out.println("Player has Collided with Monster");
 		}
 		
 		if(check("PRIMARYFIRE"))
 		{
 			milliCount += delta;
 			
-			if(milliCount == 0 || milliCount >= 100)
+			if(milliCount >= 100)
 			{
 				Bullet bullet = new Bullet(x + player.getWidth()/2 - 3, y);
 				ME.world.add(bullet);
@@ -100,5 +89,22 @@ public class Player extends Entity
 	{
 		super.render(gc, g);
 	}
-
+	
+	public void defineControls()
+	{
+		//Define Keyboard/Mouse Inputs
+		define("RIGHT", Input.KEY_RIGHT, Input.KEY_D);
+		define("LEFT", Input.KEY_LEFT, Input.KEY_A);
+		define("UP", Input.KEY_UP, Input.KEY_W);
+		define("DOWN", Input.KEY_DOWN, Input.KEY_S);
+		define("PRIMARYFIRE", Input.KEY_SPACE);
+	}
+	
+	public void defineImages()
+	{
+		//Load image using resource manager and resource.xml
+		player = ResourceManager.getImage("player");
+		playerRight = ResourceManager.getImage("playerRight");
+		playerLeft = ResourceManager.getImage("playerLeft");
+	}
 }
