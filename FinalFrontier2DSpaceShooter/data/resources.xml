@@ -6,10 +6,12 @@
 	<!-- songs -->
 	<!-- images --> 
 	<image key="player" file="/images/Player1v2.png"/>
+	<image key="playerUp" file="/images/Player1fire.png"/>
 	<image key="playerLeft" file="/images/PlayerLeft.png"/>
 	<image key="playerRight" file="/images/PlayerRight.png"/>
 	<image key="khrellKiddieLeft" file="/images/KhrellKiddieLeft.png"/>
 	<image key="khrellKiddieRight" file="/images/KhrellKiddieRight.png"/>
+	<image key="khrellKiddieHit" file="/images/KhrellKiddieRHit.png"/>
 	<image key="bullet" file="/images/bullet.png"/>
 	<!-- sheets --> 
 	<!-- fonts --> 

@@ -11,10 +11,11 @@ import it.randomtower.engine.entity.Entity;
 
 
 
-public class Monster extends Entity
+public class Monster extends Entity 
 {
 	private Image khrellKiddieRight;
 	private Image khrellKiddieLeft;
+	private Image khrellKiddieHit;
 	private int health; 
 	private int count;
 	private int numUpdates;
@@ -56,21 +57,22 @@ public class Monster extends Entity
 		
 		if(collide("BULLET", x, y) != null)
 		{
-		
 			health-=50; //Monster has been hit
-			System.out.println(health);
+			//System.out.println(health);
 			
 			if(health == 0)
 			{
 				ME.remove(this); //Monster has died
-				System.out.println("Monster has been hit by Bullet.");
+				//System.out.println("Monster has been hit by Bullet.");
 			}
+			setGraphic(khrellKiddieHit);
+			y = y - 30; 
 		}
 		
 		if(collide("PLAYER", x , y) != null)
 		{
 			ME.remove(this);
-			System.out.println("Monster has collided with Player.");
+			//System.out.println("Monster has collided with Player.");
 		}
 	}
 	
@@ -85,5 +87,6 @@ public class Monster extends Entity
 		//Monster Images
 		khrellKiddieRight = ResourceManager.getImage("khrellKiddieRight");
 		khrellKiddieLeft = ResourceManager.getImage("khrellKiddieLeft");
+		khrellKiddieHit = ResourceManager.getImage("khrellKiddieHit");
 	}
 }

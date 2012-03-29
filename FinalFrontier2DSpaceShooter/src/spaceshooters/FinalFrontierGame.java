@@ -16,7 +16,8 @@ import org.newdawn.slick.state.StateBasedGame;
  **/
 
 public class FinalFrontierGame extends StateBasedGame {
-
+	public final static int WIDTH = 800;
+	public final static int HEIGHT = 600;
 	public FinalFrontierGame(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
@@ -43,7 +44,7 @@ public class FinalFrontierGame extends StateBasedGame {
 	public static void main(String[] args) throws SlickException {
 		// TODO Auto-generated method stub
 		AppGameContainer app = new AppGameContainer(new FinalFrontierGame("Final Frontier"));
-		app.setDisplayMode(600, 600, false);
+		app.setDisplayMode(WIDTH, HEIGHT, false);
 		app.setTargetFrameRate(60);
 		app.start();
 	}
