@@ -99,7 +99,7 @@ public class Player extends Entity
 			//if(valid())
 				setGraphic(playerRight);
 		}
-		
+		else
 		if(check("LEFT") && x > 0)
 		{
 			//Move player Right
@@ -107,7 +107,7 @@ public class Player extends Entity
 			//if(valid())
 				setGraphic(playerLeft);
 		}
-		
+		else
 		if(check("UP") && y > 0)
 		{
 			//Move player Right
@@ -115,13 +115,18 @@ public class Player extends Entity
 			//if(valid())
 				setGraphic(playerUp);
 		}
-		
+		else
 		if(check("DOWN") && (y < gc.getWidth() - player.getWidth()))
 		{
 			//Move player Right
 			y = y + deltaPlayer;
 			//if(valid())
 				setGraphic(player);
+		}
+		else 
+		if(y < gc.getWidth() - player.getWidth())
+		{  
+			y = (float) (y + (.025* deltaPlayer)); //Drag player down while they aren't moving
 		}
 	}
 	

@@ -16,8 +16,10 @@ import org.newdawn.slick.state.StateBasedGame;
  **/
 
 public class FinalFrontierGame extends StateBasedGame {
+	
 	public final static int WIDTH = 800;
 	public final static int HEIGHT = 600;
+
 	public FinalFrontierGame(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub

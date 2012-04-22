@@ -37,7 +37,7 @@ public class Bullet extends Entity {
 		if(collide("MONSTER", x, y + 15) != null)
 		{
 			ME.remove(this);
-			System.out.println("Bullet has Collided with Monster");
+			//System.out.println("Bullet has Collided with Monster");
 		}
 	}
 	

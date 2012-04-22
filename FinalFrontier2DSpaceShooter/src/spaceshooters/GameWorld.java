@@ -5,15 +5,20 @@ import java.util.Random;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import it.randomtower.engine.ME;
+import it.randomtower.engine.ResourceManager;
 import it.randomtower.engine.World;
 
 public class GameWorld extends World {
 	
 	private Player player;
-	private Monster monster; 
+	private Monster monster;
+	private Level level; 
+	
 	//keeps track of time
 	long last = System.nanoTime();
 	
@@ -22,9 +27,11 @@ public class GameWorld extends World {
 		super(id, container);
 		// TODO Auto-generated constructor stub
 		
+		level = new Level(0,0,100);
+		add(level);
+	
 		player = new Player(container.getWidth()/ 2, container.getHeight() / 2, getWidth(), getHeight());
 		add(player);	
-	
 	}
 	private int getRandomXCoordinate(){
 		Random rand = new Random();
@@ -38,7 +45,7 @@ public class GameWorld extends World {
 		for(int i = 0; i < 6; i++)
 		{	
 			int x = getRandomXCoordinate();
-			System.out.println(i+" "+x);
+			//System.out.println(i+" "+x);
 			monster = new Monster(x,0);
 			add(monster);
 			//try { Thread.sleep(getRandomXCoordinate()); } catch (Exception e) {};
@@ -50,15 +57,17 @@ public class GameWorld extends World {
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException{
 
 		super.update(container, game, delta);
+		
 		long now = System.nanoTime();
 		long dif = (now-last)/1000000;
 		if(dif>getRandomXCoordinate()*5000)
 		{
 			int x = getRandomXCoordinate();
-			System.out.println(" "+x);
+			//System.out.println(" "+x);
 			Monster monster = new Monster(x,0);
 			add(monster);
 		}
+		
 	}
 	
 	@Override

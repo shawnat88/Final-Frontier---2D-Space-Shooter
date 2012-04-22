@@ -5,6 +5,7 @@
 	<!-- sounds -->
 	<!-- songs -->
 	<!-- images --> 
+	<image key="background" file="/images/background3.jpg"/>
 	<image key="player" file="/images/Player1v2.png"/>
 	<image key="playerUp" file="/images/Player1fire.png"/>
 	<image key="playerLeft" file="/images/PlayerLeft.png"/>

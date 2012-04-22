@@ -66,7 +66,7 @@ public class Monster extends Entity
 				//System.out.println("Monster has been hit by Bullet.");
 			}
 			setGraphic(khrellKiddieHit);
-			y = y - 30; 
+			y = y - 20; 
 		}
 		
 		if(collide("PLAYER", x , y) != null)
