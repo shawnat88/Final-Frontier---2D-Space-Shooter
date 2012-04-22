@@ -10,6 +10,7 @@ import it.randomtower.engine.entity.Entity;
 
 public class Level extends Entity {
 	
+	private static final float BG_SPEED = 7.5f;
 	Image background;
 	int numberOfFrames; 
 
@@ -30,8 +31,9 @@ public class Level extends Entity {
 			//Draw frames ahead
 			background.draw(x, y-background.getHeight()*frame);
 		}
+		
 		//Scroll background down
-		y++;
+		y+=BG_SPEED;
 	}
 
 }
